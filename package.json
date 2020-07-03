@@ -1,0 +1,23 @@
+{
+  "title": "Material demo",
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "description": "Derived from: https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/cards/RecipeReviewCard.js",
+  "dependencies": {
+    "react-dom": "latest",
+    "react": "latest",
+    "clsx": "latest",
+    "@material-ui/icons": "latest",
+    "@material-ui/core": "latest"
+  },
+  "keywords": [],
+  "name": "contact-tab-relationship-details",
+  "version": "0.0.489",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
