@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 import Select from "@material-ui/core/Select";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -12,7 +13,7 @@ import Addresses from "./Addresses";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(2, 0),
     paddingBottom: 76
   },
   card: {
@@ -93,18 +94,20 @@ export default function RelationshipCards() {
         </div>
       )}
       <div className={classes.root}>
-        {isGuest ? (
-          <>
-            <GuestContactCard />
-          </>
-        ) : (
-          <>
-            <ContactCard classes={{ root: classes.card }} />
-            <DescriptionCard classes={{ root: classes.card }} />
-            {isCustomer && <CustomerCard classes={{ root: classes.card }} />}
-            <Addresses scenario={scenario} />
-          </>
-        )}
+        <Container maxWidth="sm">
+          {isGuest ? (
+            <>
+              <GuestContactCard />
+            </>
+          ) : (
+            <>
+              <ContactCard classes={{ root: classes.card }} />
+              <DescriptionCard classes={{ root: classes.card }} />
+              {isCustomer && <CustomerCard classes={{ root: classes.card }} />}
+              <Addresses scenario={scenario} />
+            </>
+          )}
+        </Container>
       </div>
     </>
   );
