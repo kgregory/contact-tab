@@ -36,8 +36,8 @@ export default function ContactCard({
             HD
           </Avatar>
         }
-        title="Harry Dunn"
-        titleTypographyProps={{ variant: "h5" }}
+        title="Harry Dunn — 2 days ago"
+        subheader="Created 6/19/2020"
       />
       <CardContent>
         <CardEmails emails={[{ address: "hdunn@muttcutts.com" }]} />
