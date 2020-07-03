@@ -35,7 +35,6 @@ export default function DescriptionCard({
           </IconButton>
         }
         title="Description"
-        titleTypographyProps={{ variant: "h6" }}
         classes={{ action: classes.overrideCardAction }}
       />
       <CardContent>
