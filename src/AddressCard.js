@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
   icon: {
     margin: theme.spacing(1)
   },
+  block: {
+    display: "block"
+  },
   flexTop: { alignItems: "flex-start" }
 }));
 
@@ -109,11 +112,13 @@ export default function AddressCard({
               <ListItemIcon>
                 <LocalShippingIcon className={classes.icon} />
               </ListItemIcon>
-              <ExpandableListItemText
-                text={deliveryInstructions}
-                noText="No delivery instructions"
-                clampedLines={2}
-              />
+              <div className={classes.block}>
+                <ExpandableListItemText
+                  text={deliveryInstructions}
+                  noText="No delivery instructions"
+                  clampedLines={2}
+                />
+              </div>
             </ListItem>
           </List>
         </CardContent>

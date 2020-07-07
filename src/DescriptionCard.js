@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
     position: "relative",
     top: 4
   },
-  flex: { display: "flex" },
   grow: { flex: "1 1 auto" }
 }));
 
@@ -38,14 +37,12 @@ export default function DescriptionCard({
         classes={{ action: classes.overrideCardAction }}
       />
       <CardContent>
-        <div className={classes.flex}>
-          <ExpandableListItemText
-            clampedLines={2}
-            text={description}
-            noText="No description"
-            classes={{ container: classes.grow }}
-          />
-        </div>
+        <ExpandableListItemText
+          clampedLines={2}
+          text={description}
+          noText="No description"
+          classes={{ container: classes.grow }}
+        />
       </CardContent>
     </Card>
   );

@@ -2,22 +2,13 @@ import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Collapse from "@material-ui/core/Collapse";
-import Chip from "@material-ui/core/Chip";
-import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
 import ListItemText from "@material-ui/core/ListItemText";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const useStyles = makeStyles(theme => ({
   chip: { marginLeft: theme.spacing(1) },
-  expand: {
-    display: "flex",
-    transform: "rotate(0deg)",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
-  },
-  expandOpen: {
-    transform: "rotate(180deg)"
+  expander: {
+    marginTop: theme.spacing(1)
   },
   textCollapsed: {
     overflow: "hidden",
@@ -87,6 +78,7 @@ export default function ExpandableListItemText({
           isClamped || isExpanded ? clampedLines * 24 + 1 : undefined
         }
         classes={{ container: overrideClasses.container }}
+        style={{ display: "block" }}
       >
         <Component
           ref={listItemRef}
@@ -106,27 +98,18 @@ export default function ExpandableListItemText({
                 data-testid="display-text-line"
               >
                 {line}
-                <br />
+                {index < array.length - 1 && <br />}
               </span>
             ))
           )}
         </Component>
       </Collapse>
       {(isClamped || isExpanded) && (
-        <Chip
-          label={isExpanded ? "less" : "more"}
-          className={classes.chip}
-          onClick={onExpanderClick}
-          icon={
-            <div
-              className={clsx(classes.expand, {
-                [classes.expandOpen]: isExpanded
-              })}
-            >
-              <ExpandMoreIcon />
-            </div>
-          }
-        />
+        <div className={classes.expander}>
+          <Link component="button" color="secondary" onClick={onExpanderClick}>
+            {isExpanded ? "Less" : "More"}
+          </Link>
+        </div>
       )}
     </>
   );
