@@ -10,6 +10,7 @@ import GuestContactCard from "./GuestContactCard";
 import DescriptionCard from "./DescriptionCard";
 import CustomerCard from "./CustomerCard";
 import Addresses from "./Addresses";
+import AssigneesCard from "./AssigneesCard";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,13 +35,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function RelationshipCards() {
   const classes = useStyles();
+  const [userType, setUserType] = React.useState("associate");
   const [relationshipType, setRelationshipType] = React.useState(
     "relationship"
   );
   const [scenario, setScenario] = React.useState("none");
 
+  const isManager = userType === "manager";
   const isGuest = relationshipType === "guest";
   const isCustomer = relationshipType === "customer";
+
+  const handleChangeUserType = event => {
+    setUserType(event.target.value);
+  };
 
   const handleChangeRelationshipType = event => {
     setRelationshipType(event.target.value);
@@ -52,6 +59,18 @@ export default function RelationshipCards() {
 
   return (
     <>
+      <div className={classes.selection}>
+        <Typography className={classes.selectionLabel}>User</Typography>
+        <Select
+          labelId="user-type-select-label"
+          id="user-type-select"
+          value={userType}
+          onChange={handleChangeUserType}
+        >
+          <MenuItem value="associate">Associate</MenuItem>
+          <MenuItem value="manager">Manager</MenuItem>
+        </Select>
+      </div>
       <div className={classes.selection}>
         <Typography className={classes.selectionLabel}>Relationship</Typography>
         <Select
@@ -104,6 +123,7 @@ export default function RelationshipCards() {
               <ContactCard classes={{ root: classes.card }} />
               <DescriptionCard classes={{ root: classes.card }} />
               {isCustomer && <CustomerCard classes={{ root: classes.card }} />}
+              {isManager && <AssigneesCard classes={{ root: classes.card }} />}
               <Addresses scenario={scenario} />
             </>
           )}
