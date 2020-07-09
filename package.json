@@ -3,7 +3,7 @@
   "devDependencies": {
     "react-scripts": "latest"
   },
-  "description": "Derived from: https://github.com/mui-org/material-ui/blob/master/docs/src/pages/components/cards/RecipeReviewCard.js",
+  "description": "",
   "dependencies": {
     "react-dom": "latest",
     "react": "latest",
@@ -12,7 +12,7 @@
     "@material-ui/core": "latest"
   },
   "keywords": [],
-  "name": "contact-tab-relationship-details",
+  "name": "relationship-details-contact-tab",
   "version": "0.0.489",
   "scripts": {
     "start": "react-scripts start",
