@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
     transform: "rotate(180deg)"
   },
   icon: { marginLeft: theme.spacing(1) },
-  noIcon: { marginLeft: 56 },
   subsequent: {
     marginTop: theme.spacing(0.25)
   }
@@ -51,17 +50,13 @@ export default function CardEmails({
     <>
       <List disablePadding classes={{ root: overrideClasses.root }}>
         {emails.slice(0, upperbound).map(({ address }, index) => (
-          <ListItem
-            key={`${address}-${index}`}
-            disableGutters
-            {...(index > 0 ? { classes: { root: classes.noIcon } } : {})}
-          >
+          <ListItem key={`${address}-${index}`} disableGutters>
             {index === 0 && (
               <ListItemIcon>
                 <EmailIcon className={classes.icon} />
               </ListItemIcon>
             )}
-            <ListItemText>
+            <ListItemText inset={index > 0}>
               <Link href="" color="secondary">
                 {address}
               </Link>
@@ -88,12 +83,8 @@ export default function CardEmails({
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <List disablePadding classes={{ root: overrideClasses.root }}>
           {emails.slice(upperbound).map(({ address }, index) => (
-            <ListItem
-              key={`hidden-${address}-${index}`}
-              disableGutters
-              classes={{ root: classes.noIcon }}
-            >
-              <ListItemText>
+            <ListItem key={`hidden-${address}-${index}`} disableGutters>
+              <ListItemText inset>
                 <Link href="" color="secondary">
                   {address}
                 </Link>

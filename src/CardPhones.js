@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
     transform: "rotate(180deg)"
   },
   icon: { margin: theme.spacing(1) },
-  noIcon: { marginLeft: 56 },
   subsequent: {
     marginTop: theme.spacing(0.25)
   }
@@ -53,17 +52,14 @@ export default function CardPhones({
         {phones
           .slice(0, upperbound)
           .map(({ number, type, extension }, index) => (
-            <ListItem
-              key={`${number}-${index}`}
-              disableGutters
-              {...(index > 0 ? { classes: { root: classes.noIcon } } : {})}
-            >
+            <ListItem key={`${number}-${index}`} disableGutters>
               {index === 0 && (
                 <ListItemIcon>
                   <PhoneIcon className={classes.icon} />
                 </ListItemIcon>
               )}
               <ListItemText
+                inset={index > 0}
                 primary={
                   <Link href="" color="secondary">
                     {number}
@@ -98,12 +94,9 @@ export default function CardPhones({
           {phones
             .slice(upperbound)
             .map(({ number, type, extension }, index) => (
-              <ListItem
-                key={`hidden-${number}-${index}`}
-                disableGutters
-                classes={{ root: classes.noIcon }}
-              >
+              <ListItem key={`hidden-${number}-${index}`} disableGutters>
                 <ListItemText
+                  inset
                   primary={
                     <Link href="" color="secondary">
                       {number}
